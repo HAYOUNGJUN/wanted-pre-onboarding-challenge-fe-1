@@ -29,21 +29,21 @@ const Auth = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
+    
     if (isLoginMode) {
-      fetch("http://localhost:5000/users/login", {
+      fetch("http://localhost:8080/users/login", {
         method: "POST",
         body: JSON.stringify(inputs),
       })
         .then((res) => res.json())
         .then((res) => {
           if (res.token) {
-            localStorage.setItem("loing-token", res.token);
+            localStorage.setItem("login-token", res.token);
             console.log(res.message);
           }
         });
     } else {
-      fetch("http://localhost:5000/users/create", {
+      fetch("http://localhost:8080/users/create", {
         method: "POST",
         body: JSON.stringify(inputs),
       })
